@@ -2,7 +2,8 @@ import { css } from 'molcss'
 // ...
 import "./App.css"
 import "./assets/animation.css"
-import { SpinningCube } from './spin-me-around'
+import { SpinningMaxwellTheCat } from './spin'
+import { logWithLabel } from './utils'
 
 const movingDot = css`
   background-size: 40px 40px;
@@ -13,6 +14,7 @@ const movingDot = css`
   animation: dot_grid_move 5s linear infinite, animation_fadeIn 1.5s ease-out forwards;
   position: absolute;
   top: 0;
+  z-index: -1;
 `
 
 const spinning__scene = css`
@@ -30,7 +32,8 @@ export default function App() {
     <>
       <div class={movingDot} />
       <div class={spinning__scene}>
-        <SpinningCube cubeSize$={140} />
+        {/* <SpinningCube cubeSize$={140} /> */}
+        <SpinningMaxwellTheCat />
       </div>
     </>
   )

@@ -11,6 +11,7 @@ export default defineConfig(() => {
     server: {
       port: 3000,
     },
+    assetsInclude: ["**/*.glb"]
     // root: "https://lilunderduck.github.io/random-ahh-website/dist"
   }
 })
