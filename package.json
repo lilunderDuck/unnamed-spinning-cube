@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@solidjs/router": "^0.15.4",
+    "molcss": "^0.2.5",
     "solid-js": "^1.9.15"
   }
 }
