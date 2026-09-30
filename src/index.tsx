@@ -1,8 +1,9 @@
 /* @refresh reload */
 import { render } from 'solid-js/web';
 import 'solid-devtools';
+import "molcss/style.css"
 
-import './index.css';
+import './assets/index.css';
 import App from './App';
 
 const root = document.getElementById('root');
