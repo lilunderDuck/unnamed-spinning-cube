@@ -11,7 +11,7 @@ export default defineConfig((options) => {
     server: {
       port: 3000,
     },
-    root: options.command === "build" ? "/unnamed-spinning-cube/" : "./",
+    base: options.command === "build" ? "/unnamed-spinning-cube/" : "./",
     build: {
       outDir: "./docs"
     },
