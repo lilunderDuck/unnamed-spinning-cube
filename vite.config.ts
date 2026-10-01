@@ -3,7 +3,7 @@ import solidPlugin from 'vite-plugin-solid'
 import devtools from 'solid-devtools/vite'
 import molcssPlugin from "molcss/vite-plugin"
 
-export default defineConfig(() => {
+export default defineConfig((options) => {
   return {
     plugins: [devtools(), solidPlugin(), molcssPlugin({
       content: 'src/**/*.{js,jsx,ts,tsx}',
@@ -11,6 +11,7 @@ export default defineConfig(() => {
     server: {
       port: 3000,
     },
+    root: options.command === "build" ? "/unnamed-spinning-cube/" : "./",
     build: {
       outDir: "./docs"
     },
