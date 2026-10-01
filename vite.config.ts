@@ -13,7 +13,8 @@ export default defineConfig((options) => {
     },
     base: options.command === "build" ? "/unnamed-spinning-cube/" : "./",
     build: {
-      outDir: "./docs"
+      outDir: "./docs",
+      emptyOutDir: false
     },
     assetsInclude: ["**/*.glb"]
     // root: "https://lilunderduck.github.io/random-ahh-website/dist"
