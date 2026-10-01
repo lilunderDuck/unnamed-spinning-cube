@@ -1,20 +1,19 @@
-import { AmbientLight, Box3, DirectionalLight, PerspectiveCamera, Scene, Vector3, WebGLRenderer } from "three"
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import { AmbientLight, DirectionalLight, PerspectiveCamera, Scene, WebGLRenderer } from "three"
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
-import { onCleanup, onMount } from "solid-js"
+import { onMount } from "solid-js"
 // ...
 import { css } from "molcss"
 // ...
 import { duckDotLog, logStateTransition } from "../../utils"
-import { shoutOut } from "./shout"
 // @ts-ignore
-import maxwellModel from "../../assets/maxwell_the_cat_dingus.glb"
+import { AnimationFrame, createMaxwellThenAddTo } from "./model"
 
 export function SpinningMaxwellTheCat() {
   logStateTransition("CONSTRUCT")
   duckDotLog("hold on, I need to steal a bit of GPU power for this one...")
 
   const CAT_MODEL_LIGHT_INTENSITY = 5
+  const CAT_ROTATION_DEG = -0.03
   
   let canvasRef!: HTMLCanvasElement
   const initRenderer = () => {
@@ -29,7 +28,7 @@ export function SpinningMaxwellTheCat() {
     renderer.setClearColor(0x000000, 0)
 
     const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-    camera.position.set(0, 2, 5)
+    camera.position.set(0, 18, 30)
     window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth / window.innerHeight
       camera.updateProjectionMatrix()
@@ -37,33 +36,6 @@ export function SpinningMaxwellTheCat() {
     })
 
     return [renderer, camera] as const
-  }
-
-  const initModelAndAddToScene = (scene: Scene, controls: OrbitControls) => {
-    logStateTransition("LOAD_MODEL", "for", maxwellModel)
-    const loader = new GLTFLoader()
-    loader.load(
-      maxwellModel, 
-      (gltf) => {
-        const model = gltf.scene
-        scene.add(model)
-        
-        // Center the camera perspective on the newly loaded object
-        const box = new Box3().setFromObject(model)
-        const center = box.getCenter(new Vector3())
-        controls.target.copy(center)
-      },
-      (progressEvent) => {
-        if (progressEvent.loaded / progressEvent.total * 100 <= 100) {
-          logStateTransition("LOAD_MODEL_COMPLETE", `\n|  mod loading complete: ${maxwellModel} has been loaded`)
-        }
-      },
-      (error) => {
-        logStateTransition('LOAD_MODEL_ERROR', error)
-      }
-    )
-
-    shoutOut()
   }
   
   onMount(() => {
@@ -74,23 +46,22 @@ export function SpinningMaxwellTheCat() {
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true
     
-    const ambientLight = new AmbientLight(0xffffff, CAT_MODEL_LIGHT_INTENSITY)
-    scene.add(ambientLight)
-    
+    const ambientLight = new AmbientLight(0xffffff, CAT_MODEL_LIGHT_INTENSITY)    
     const directionalLight = new DirectionalLight(0xffffff, 1.2)
     directionalLight.position.set(5, 10, 7)
-    scene.add(directionalLight)
 
-    initModelAndAddToScene(scene, controls)
+    scene.add(ambientLight, directionalLight)
+    const maxwell = createMaxwellThenAddTo(scene)
 
-    const render = () => {
-      requestAnimationFrame(render)
-      controls.update() 
+    const animationFrame = new AnimationFrame(30, () => {
+      if (maxwell.model$) {
+        maxwell.model$.rotateY(CAT_ROTATION_DEG)
+      }
+      // controls.update()
       renderer.render(scene, camera)
-    }
-
-    logStateTransition("RENDER_LOOP", "running...")
-    render()
+    })
+    
+    animationFrame.start()
   })
 
   return <>
