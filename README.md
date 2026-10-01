@@ -2,7 +2,7 @@
 Not a cube spinning around violently actually, it's just Maxwell the Cat spinning around slowly.
 ![preview](dumpster-for-readme/maxwell_spinning.gif)
 
-See this unserious project here: https://github.com/lilunderDuck/unnamed-spinning-cube
+See this unserious project here: https://lilunderduck.github.io/unnamed-spinning-cube/
 
 Originally I made a spinning loader to mess around with github pages (before this [commit](https://github.com/lilunderDuck/unnamed-spinning-cube/commit/9fac2a8762e70a76c7559210fa49817aeae9b154) actually), then I decided to reuse this repo for something fun.
 
