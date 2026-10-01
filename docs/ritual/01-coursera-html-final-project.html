@@ -12,8 +12,16 @@
   <script>
     const LOG_BASE_STYLE = "color: #11111b; padding-inline: 5px; border-radius: 6px; font-weight: bold"
     const DUCK_LOG_LABEL = `${LOG_BASE_STYLE};background-color: #ebb748`
+    const messageForCarelessRater = [
+      "By viewing this page, you agreed to:",
+      "- Read the instructions to rate my or any others page correctly, without fast scanning for like 5 seconds",
+      "- Read the source code of this page **carefully**, so that you can rate my works",
+      "- No unfair rating regardless of how busy you are",
+      "- This is not a TOS, but a disclaimer for those who rated without thinking",
+      "- For future: if you're accidentally visiting this, then yes, it's just for a project and nothing else."
+    ]
     console.log(
-      `%cduck%c %cversion%c %cUntitled project name%c, made with %c[pretent it's 1991 like a scientist]%c, we speedrunning the course final project with this!\n\nBut do you even read these log messages? I guess you won't.`, 
+      `%cduck%c %cversion%c %cUntitled project name%c, made with %c[pretent it's 1991 like a scientist]%c, we speedrunning the course final project with this!\n\n${messageForCarelessRater.join("\n")}`, 
       DUCK_LOG_LABEL, "",
       `${LOG_BASE_STYLE};background-color: #ff6a8d`, "",
       "color: #63c3ff;font-weight:bold", "",
