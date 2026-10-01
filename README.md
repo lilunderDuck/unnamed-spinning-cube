@@ -1,36 +1,15 @@
-## Usage
+# Spinning cube??
+Not a cube spinning around violently actually, it's just Maxwell the Cat spinning around slowly.
+![preview](dumpster-for-readme/maxwell_spinning.gif)
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+See this unserious project here: https://github.com/lilunderDuck/unnamed-spinning-cube
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+Originally I made a spinning loader to mess around with github pages (before this [commit](https://github.com/lilunderDuck/unnamed-spinning-cube/commit/9fac2a8762e70a76c7559210fa49817aeae9b154) actually), then I decided to reuse this repo for something fun.
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
+# Also a dumping place
+If for some reason, my university required me to learn a web programming course and/or making a small web project (¯\\(ツ)/¯), I will put into here as well. 
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+# Credits
+The original Maxwell the cat (Dingus) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) and can be found on [Sketchfab here](https://sketchfab.com/3d-models/maxwell-the-cat-dingus-2ca7f3c1957847d6a145fc35de9046b0). Shout out to [`@bean(alwayshasbean)`](https://sketchfab.com/alwayshasbean) for making this model!
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm run dev` or `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
-
-## This project was created with the [Solid CLI](https://github.com/solidjs-community/solid-cli)
+Additionally, this credit message can be found by opening browser dev tools and the message is located here: [`./src/spin/maxwell/model.ts`](https://github.com/lilunderDuck/unnamed-spinning-cube/blob/b977ec0cf944cf22cb24ed472eaba51c28eeed47/src/spin/maxwell/model.ts#L40)
