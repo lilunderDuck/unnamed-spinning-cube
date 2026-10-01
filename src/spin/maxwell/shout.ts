@@ -2,7 +2,10 @@ import { DUCK_LOG_LABEL, LOG_BASE_STYLE, logStateTransition, logWithLabel } from
 
 export function shoutOut() {
   logStateTransition('SHOUT_CREDIT', "making sure to credit people...")
-  logWithLabel("debug", "I did read what CC BY 4.0 means, and I have to say that it easier to understand than TOS, even for a non English native like me :)")
+  if (import.meta.env.DEV) {
+    logWithLabel("debug", "I did read what CC BY 4.0 means, and I have to say that it easier to understand than TOS, even for a non English native like me :)")
+  }
+  
   const CAT_ASCII = `
                      \\    /\\
                       )  ( ')

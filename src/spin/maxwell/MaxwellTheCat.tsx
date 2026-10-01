@@ -1,7 +1,7 @@
 import { AmbientLight, Box3, DirectionalLight, PerspectiveCamera, Scene, Vector3, WebGLRenderer } from "three"
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
-import { onMount } from "solid-js"
+import { onCleanup, onMount } from "solid-js"
 // ...
 import { css } from "molcss"
 // ...
@@ -13,10 +13,12 @@ import maxwellModel from "../../assets/maxwell_the_cat_dingus.glb"
 export function SpinningMaxwellTheCat() {
   logStateTransition("CONSTRUCT")
   duckDotLog("hold on, I need to steal a bit of GPU power for this one...")
+
+  const CAT_MODEL_LIGHT_INTENSITY = 5
   
   let canvasRef!: HTMLCanvasElement
   const initRenderer = () => {
-    logStateTransition("INIT_RENDER", "-> WebGL")
+    logStateTransition("INIT_RENDER", "for WebGL")
     const renderer = new WebGLRenderer({ 
       antialias: true, 
       canvas: canvasRef,
@@ -51,30 +53,30 @@ export function SpinningMaxwellTheCat() {
         const center = box.getCenter(new Vector3())
         controls.target.copy(center)
       },
-      (xhr) => {
-        if (xhr.loaded / xhr.total * 100 <= 100) {
+      (progressEvent) => {
+        if (progressEvent.loaded / progressEvent.total * 100 <= 100) {
           logStateTransition("LOAD_MODEL_COMPLETE", `\n|  mod loading complete: ${maxwellModel} has been loaded`)
         }
       },
       (error) => {
-        console.error('An error happened while loading the model:', error)
+        logStateTransition('LOAD_MODEL_ERROR', error)
       }
     )
 
     shoutOut()
   }
-
+  
   onMount(() => {
     const [renderer, camera] = initRenderer()
     const scene = new Scene()
-
+  
     logStateTransition("COMMON_SETUP")
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true
-
-    const ambientLight = new AmbientLight(0xffffff, 0.8)
+    
+    const ambientLight = new AmbientLight(0xffffff, CAT_MODEL_LIGHT_INTENSITY)
     scene.add(ambientLight)
-
+    
     const directionalLight = new DirectionalLight(0xffffff, 1.2)
     directionalLight.position.set(5, 10, 7)
     scene.add(directionalLight)
@@ -87,9 +89,9 @@ export function SpinningMaxwellTheCat() {
       renderer.render(scene, camera)
     }
 
+    logStateTransition("RENDER_LOOP", "running...")
     render()
   })
-
 
   return <>
     <canvas ref={canvasRef} class={css`position: fixed; top: 0; z-index: 1;`} />

@@ -5,11 +5,11 @@ import "molcss/style.css"
 
 import './assets/index.css'
 import App from './App'
-import { logWithLabel } from './utils'
+import { logVersion } from './utils'
 
 const root = document.getElementById('root')
 
-logWithLabel("version", "unnamed-spinning-cube, made with no contexts and solid@1.9.15 THREE@0.186.1 <no libquackity here!>, love is really the 1st ingredient for this one!")
+logVersion("unnamed-spinning-cube", "solid@1.9.15 THREE@0.186.1 <no libquackity here!>")
 
 if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   throw new Error(
