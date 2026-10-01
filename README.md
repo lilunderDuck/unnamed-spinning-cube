@@ -7,7 +7,10 @@ See this unserious project here: https://lilunderduck.github.io/unnamed-spinning
 Originally I made a spinning loader to mess around with github pages (before this [commit](https://github.com/lilunderDuck/unnamed-spinning-cube/commit/9fac2a8762e70a76c7559210fa49817aeae9b154) actually), then I decided to reuse this repo for something fun.
 
 # Also a dumping place
-If for some reason, my university required me to learn a web programming course and/or making a small web project (¯\\(ツ)/¯), I will put into here as well. 
+If for some reason, my university required me to learn a web programming course and/or making a small web project (¯\\(ツ)/¯), I will put into here as well.
+
+Update: I love peer-to-peer ratings so much yay!!!
+![wall of flame](dumpster-for-readme/deserved_to_be_in_wall_of_flame.png)
 
 # Credits
 The original Maxwell the cat (Dingus) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) and can be found on [Sketchfab here](https://sketchfab.com/3d-models/maxwell-the-cat-dingus-2ca7f3c1957847d6a145fc35de9046b0). Shout out to [`@bean(alwayshasbean)`](https://sketchfab.com/alwayshasbean) for making this model!
