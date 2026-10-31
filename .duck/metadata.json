@@ -6,5 +6,12 @@
   "status": "active",
   "icon": "maxwell.png",
   "banner": "maxwell_banner.png",
-  "repoUrl": "https://github.com/lilunderDuck/unnamed-spinning-cube"
+  "repoUrl": "https://github.com/lilunderDuck/unnamed-spinning-cube",
+  "licence": [{
+    "name": "MIT",
+    "why": "for the code that handles rendering stuff"
+  }, {
+    "name": "CC BY 4.0",
+    "why": "for all of the 3D models used in the project"
+  }]
 }
