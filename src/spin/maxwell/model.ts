@@ -4,6 +4,8 @@ import { DUCK_LOG_LABEL, LOG_BASE_STYLE, logStateTransition } from "../../utils"
 import maxwellModel from "../../assets/maxwell_the_cat_dingus.glb"
 import { Box3, Group, Object3DEventMap, Scene, Vector3 } from "three"
 
+type ModelOutputRef = { model$: Group<Object3DEventMap> | null }
+
 export function createMaxwellThenAddTo(scene: Scene) {
   logStateTransition("LOAD_MODEL", "for", maxwellModel)
   const loader = new GLTFLoader()

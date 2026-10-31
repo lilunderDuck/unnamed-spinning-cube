@@ -3,7 +3,8 @@ import { css } from 'molcss'
 import "./App.css"
 import "./assets/animation.css"
 import { SpinningMaxwellTheCat } from './spin'
-import { logWithLabel } from './utils'
+import { useUnnamedSpinningCubeContext } from './provider'
+import { LoadingModelTextIndicator } from './components'
 
 const movingDot = css`
   background-size: 40px 40px;
@@ -11,7 +12,7 @@ const movingDot = css`
   width: 100%;
   height: 100%;
   background-color: var(--crust);
-  animation: dot_grid_move 5s linear infinite, animation_fadeIn 1.5s ease-out forwards;
+  animation: dot_grid_move 5s linear infinite;
   position: absolute;
   top: 0;
   z-index: -1;
@@ -28,6 +29,8 @@ const spinning__scene = css`
 `
 
 export default function App() {
+  const { model$ } = useUnnamedSpinningCubeContext()
+
   return (
     <>
       <div class={movingDot} />
@@ -35,6 +38,7 @@ export default function App() {
         {/* <SpinningCube cubeSize$={140} /> */}
         <SpinningMaxwellTheCat />
       </div>
+      <LoadingModelTextIndicator />
     </>
   )
 }

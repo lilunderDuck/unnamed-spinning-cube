@@ -6,6 +6,7 @@ import "molcss/style.css"
 import './assets/index.css'
 import App from './App'
 import { logVersion } from './utils'
+import { UnnamedSpinningCubeProvider } from './provider'
 
 const root = document.getElementById('root')
 
@@ -17,4 +18,8 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   )
 }
 
-render(() => <App />, root!)
+render(() => (
+  <UnnamedSpinningCubeProvider>
+    <App />
+  </UnnamedSpinningCubeProvider>
+), root!)
